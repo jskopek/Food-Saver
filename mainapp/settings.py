@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'south',
     'products',
     'receipts',
+    'members',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -159,6 +160,7 @@ LOGGING = {
     }
 }
 
+AUTH_PROFILE_MODULE = 'members.Member'
 
 import os
 if not bool(os.environ.get('MBAIR', False)):

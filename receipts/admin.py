@@ -3,7 +3,7 @@ from receipts.models import Receipt
 
 
 class ReceiptAdmin(admin.ModelAdmin):
-    list_display = ('code', 'created_at', 'number_products')
+    list_display = ('code', 'created_at', 'number_products', 'member')
 
     def number_products(self, obj):
         return obj.products.count()

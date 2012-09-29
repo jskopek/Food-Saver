@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Receipt - {{ receipt.code }}</h1>
+<h2>Linked to {{ member.phone_number }}</h2>
+
+<ul>
+{% for product in receipt.products.all %}
+    <li>{{ product.name }} - Expires on {{ product.expires_at }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
