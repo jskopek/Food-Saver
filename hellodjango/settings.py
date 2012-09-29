@@ -150,5 +150,8 @@ LOGGING = {
     }
 }
 
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+
+import os
+if not bool(os.environ.get('MBAIR', False)):
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
