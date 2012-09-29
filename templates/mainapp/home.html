@@ -1,1 +1,5 @@
-Hello world
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url admin:index %}">Take me to the admin page!</a>
+{% endblock %}
