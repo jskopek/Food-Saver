@@ -7,6 +7,9 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+import os
+PATH = os.path.join(os.path.dirname(__file__))
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -106,6 +109,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '%s/../templates' % PATH,
 )
 
 INSTALLED_APPS = (
