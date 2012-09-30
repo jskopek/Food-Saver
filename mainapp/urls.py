@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     url(r'^$', 'mainapp.views.home', name='home'),
     # url(r'^mainapp/', include('mainapp.foo.urls')),
 
-    url(r'^scan/$', 'receipts.views.scan', name='scan'),
+    url(r'^scan/$', 'receipts.views.scan'),
+    url(r'^scan/sms/$', 'receipts.views.scan_sms'),
+    url(r'^remind/$', 'receipts.views.remind'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

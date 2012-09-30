@@ -162,7 +162,16 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'members.Member'
 
+TWILIO_TOKEN = ""
+TWILIO_ACCOUNT = ""
+TWILIO_PHONE = ""
+
 import os
 if not bool(os.environ.get('MBAIR', False)):
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+
+try:
+    from settings_local import *
+except:
+    pass

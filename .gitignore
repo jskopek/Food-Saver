@@ -2,3 +2,4 @@ venv
 *.pyc
 db.sql
 *.sublime-*
+settings_local.py
