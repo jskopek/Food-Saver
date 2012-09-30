@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Phone Number: {{ phone }}</h1>
 <a href="{% url admin:index %}">Take me to the admin page!</a>
+
+<h1>Send a reminder</h1>
+<form action="{% url remind %}" method="GET">
+    <input type="hidden" name="next" value="{% url home %}"/>
+    
+    Month:
+    <select name="month">
+        {% for month in months %}
+        <option>{{ month }}</option>
+        {% endfor %}
+    </select>
+    Day:
+    <select name="day">
+        {% for day in days %}
+        <option>{{ day }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Remind!" />
+</form>
 {% endblock %}

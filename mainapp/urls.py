@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^scan/$', 'receipts.views.scan'),
     url(r'^scan/sms/$', 'receipts.views.scan_sms'),
-    url(r'^remind/$', 'receipts.views.remind'),
+    url(r'^remind/$', 'receipts.views.remind', name='remind'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

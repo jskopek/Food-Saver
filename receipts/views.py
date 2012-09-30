@@ -4,6 +4,7 @@ from products.models import Product
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from datetime import date, timedelta
 from twilio.rest import TwilioRestClient
@@ -85,4 +86,7 @@ def remind(request):
         else:
             print "Reminded %s: %s" % (phone, msg)
 
-    return HttpResponse(phones_to_warn)
+    if request.GET.get("next"):
+        return HttpResponseRedirect(request.GET["next"])
+    else:
+        return HttpResponse(phones_to_warn)
