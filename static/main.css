@@ -1,3 +1,99 @@
 .content {
-    margin-top: 80px;
+    margin-top: 60px;
+}
+
+.carousel {
+    background: green;
+    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/2046/2046713.png?1324410652);
+    box-shadow: 2px 2px 2px #888;
+}
+.carousel .item {
+    position: relative;
+    height: 450px;
+    width: 600px;
+    margin: 0 auto;
+}
+.carousel .item h1,
+.carousel .item h2 {
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+.receipts {
+    width: 100%;
+}
+.receipt {
+    border: 1px solid #000;
+    width: 200px;
+    float: left;
+    margin: 10px;
+    background: #fff;
+    padding: 20px 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+.receipt-logo {
+    font-weight: bold;
+    width: 80px;
+    text-align: center;
+    margin: 0 auto;
+}
+.receipt:first-child {
+    -webkit-transform:rotate(-10deg);
+
+}
+.receipt:last-child {
+    -webkit-transform:rotate(10deg);
+    float: right;
+}
+
+.receipt-products {
+    border: 1px dotted #aaa;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-left: none;
+    border-right: none;
+}
+.price-item {
+    line-height: 19px;
+    border-bottom: 1px dotted #000;
+}
+.price-item span,
+.price-item i {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    bottom: -1px;
+    padding: 0 4px;
+}
+.price-item i {
+    float: right;
+}
+.receipt-code-wrapper {
+    background: url(receiptcodewrapper.png);
+    text-align: center;
+}
+.receipt-code {
+    background: #fff;
+    display: inline-block;
+    border: 1px solid #afafaf;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+.smart-receipt p {
+    margin: 4px 0;
+    padding: 0;
+}
+.center {
+    text-align: center;
+}
+.heavy {
+    font-weight: bold;
+}
+
+.simulate-reminder {
+    height: 40px;
+}
+.simulate-reminder select {
+    width: 60px;
 }

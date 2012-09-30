@@ -1,25 +1,79 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Phone Number: {{ phone }}</h1>
-<a href="{% url admin:index %}">Take me to the admin page!</a>
+{% block extra_head %}
+<script type="text/javascript">
+$("document").ready(function() {
+    $(".carousel").carousel({"interval": false});
 
-<h1>Send a reminder</h1>
-<form action="{% url remind %}" method="GET">
-    <input type="hidden" name="next" value="{% url home %}"/>
-    
-    Month:
-    <select name="month">
-        {% for month in months %}
-        <option>{{ month }}</option>
-        {% endfor %}
-    </select>
-    Day:
-    <select name="day">
-        {% for day in days %}
-        <option>{{ day }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Remind!" />
-</form>
+})
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div id="myCarousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <h1>What are Smart Receipts?</h1>
+            <iframe width="560" height="315" src="http://www.youtube.com/embed/VEuhiqz31Cs" frameborder="0" allowfullscreen></iframe>
+            <h2>Click the arrow buttons to try!</h2>
+        </div>
+        <div class="clearfix item">
+            <h1>Try it now with these receipts:</h1>
+            <div class="receipts">
+                {% for receipt in receipts %}
+                <div class="receipt">
+                    <div class='receipt-logo'>Bob's Bagel Boys</div>
+                    <ul class="receipt-products nav">
+                        {% for product in receipt.products.all %}
+                        <li class="price-item"><span>{{ product.name }}</span><i>(exp. {{ product.expires_at|default:"Never" }})</i></li>
+                        {% endfor %}
+                    </ul>
+                    <div class="smart-receipt">
+                        <h4>Track your groceries</h4>
+                        <div class='receipt-code-wrapper'><div class="receipt-code">{{ receipt.code }}</div></div>
+                        <p class='center'>Text your number to:</p>
+                        <p class='center heavy'>{{ phone }}</p>
+                        <p>to get notification when the items on your grocery list are about to expire</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+
+
+{# <h1>Phone Number: {{ phone }}</h1> #}
+<h4>First, use one of the sample receipts above. Then click to send a manual reminder for a given date:</h4>
+
+<div class="well simulate-reminder">
+    <h4 class='pull-left'>Send a reminder</h4>
+    <form action="{% url remind %}" method="GET" class="pull-right">
+        <input type="hidden" name="next" value="{% url home %}"/>
+        
+        <b>What day is it today?</b>
+        <i>Month:</i>
+        <select name="month">
+            {% for month in months %}
+            <option {% if month == 10 %}selected{% endif %}>{{ month }}</option>
+            {% endfor %}
+        </select>
+        <i>Day:</i>
+        <select name="day">
+            {% for day in days %}
+            <option {% if day == 1 %}selected{% endif %}>{{ day }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Remind!" class="btn btn-primary"/>
+    </form>
+</div>
+
 {% endblock %}
